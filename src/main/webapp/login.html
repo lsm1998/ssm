@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/axios.min.js"></script>
+    <script src="js/vue.min.js"></script>
+</head>
+<body>
+<h1>首页</h1>
+<div id="itany">
+    <form action="" method="get">
+        <input type="text" name="userName" v-model="params.userName"><br>
+        <input type="password" name="passWord" v-model='params.passWord'><br>
+        <button @click="send" onclick="return false">登录</button>
+    </form>
+    <a href="bootstrap.html">进入bootstrap页面</a>
+    <a href="vue.html">进入vue.js页面</a>
+    <a href="main.html">进入首页</a>
+</div>
+<script>
+    window.onload = function () {
+        new Vue({
+            el: '#itany',
+            data: {
+                params: {
+                    userName: "123",
+                    passWord: "",
+                },
+                url: "/user/login.do"
+            },
+            dataType: "application/json",
+            contentType: "json",
+            methods: {
+                send() {
+                    let _this = this;
+                    let params = new URLSearchParams();
+                    params.append('userName', _this.params.userName);
+                    params.append('passWord', _this.params.passWord);
+                    axios.post(this.url, params).then(function (response) {
+                        alert(response.data.msg)
+                        if(response.data.code==1)
+                        {
+                            window.location.href="main.html";
+                        }
+                    })
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>

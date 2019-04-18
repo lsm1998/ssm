@@ -1,0 +1,163 @@
+*{
+    font-family: "微软雅黑", Arial;
+}
+@media (max-width:767.98px) {
+    section#html-area div.col-md-6:last-child{
+        margin-top: 10px;
+    }
+    section#boots-area div.col-md-6:last-child,
+    section#download-area div.col-md-6:last-child{
+        margin-top: 20px;
+    }
+}
+/*导航的样式*/
+a.brand-style{
+    font-size: 28px;
+    color: #40d2b1!important;
+    font-weight: bolder;
+}
+a.brand-style:hover{
+    color: #000000!important;
+}
+a.menu-style{
+    font-size: 16px;
+    font-weight: bolder;
+}
+button.menu-btn-style{
+    width: 45px;
+    height: 30px;
+    padding: 0px;
+    outline: none;
+}
+button.menu-btn-style:hover{
+    background-color: rgba(69,210,184,0.6);
+}
+span.menu-icon-style{
+    width: 25px;
+    height: 25px;
+}
+/*广告区域*/
+section#ad-area{
+    width: 100%;
+    height: 100%;
+    padding: 50px 0px;
+    background-color: darkorchid;
+    color: #ffffff;
+    margin-top: 68px;
+}
+section#ad-area h1{
+    font-weight: bolder;
+    text-align: center;
+}
+section#ad-area p{
+    font-size: 14px;
+    text-align: center;
+    margin-top: 20px;
+    line-height: 30px;
+}
+section#ad-area img{
+    margin-top: 20px;
+}
+/*分类区域*/
+section#category-area{
+    width: 100%;
+    height: 100%;
+    padding: 50px 0px;
+    text-align: center;
+}
+section#category-area a{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    color:#000000;
+    text-decoration: none;
+    padding: 20px 0px 10px 0px;
+}
+section#category-area a>h3{
+    font-weight: bolder;
+    margin-top: 20px;
+}
+section#category-area a>p{
+    font-size: 14px;
+}
+section#category-area a:hover{
+    background-color: #F1F1F1;
+    box-shadow: 1px 1px 4px #CCCCCC;
+}
+/*HTML5区域,bootstrap区域,app下载区域,联系区域*/
+section#html-area,section#boots-area,section#course-area,section#download-area,section#link-area{
+    width: 100%;
+    height: 100%;
+    padding: 50px 0px;
+    background-color: #F8F8F8;
+}
+section#html-area div.wrap,section#boots-area div.wrap,section#download-area div.wrap,section#link-area div.wrap{
+    display: flex;
+    display: -webkit-flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+section#html-area h2,section#boots-area h2,section#download-area h2,section#link-area h2{
+    font-weight: bolder;
+}
+section#html-area p,section#boots-area p,section#download-area p,section#link-area p{
+    font-size: 14px;
+}
+section#html-area span.icon-style,section#boots-area span.icon-style{
+    color: #ffffff;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: #41D2B1;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+    margin-right: 10px;
+}
+
+section#boots-area,section#download-area{
+    background-color: #FFFFFF;
+}
+
+/*最新课程*/
+section#course-area h2{
+    font-weight: bolder;
+    text-align: center;
+    margin: 0px 0px 20px 0px;
+}
+
+section#course-area div.course{
+    width: 275px;
+    height: 255px;
+    background-color: #FFFFFF;
+    text-align: center;
+    margin: 10px auto;
+}
+
+section#course-area div.course a{
+    margin-top: 21px;
+}
+
+/*app下载区域*/
+section#download-area button>span{
+    margin-right: 5px;
+}
+section#download-area button{
+    margin-right: 20px;
+}
+
+/*底部区域*/
+footer{
+    font-size: 14px;
+    text-align: center;
+}
+footer p{
+    margin: 0px;
+    line-height: 37px;
+}
+
+

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/axios.min.js"></script>
+    <script src="js/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <h3>v-for指令（遍历数据）</h3>
+    <ul>
+        <li v-for="l in list">姓名：{{l.name}},年龄：{{l.age}}</li>
+    </ul>
+    <h3>v-bind指令（动态绑定属性）</h3>
+    <a :href="url"><img :src="img"></a>
+    <h3>v-on指令（动态绑定属性）</h3>
+    <button @click="onClick">点我</button>
+    <button @click="onClick2('你好')">给个参数</button>
+    <form @submit.prevent="onSubmit" method="get" action="main.html">
+        <input type="text">
+        <input type="submit" value="提交">
+    </form>
+    <h3>v-model指令（双向绑定数据）</h3>
+    <input type="text" v-model.lazy="name">
+</div>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            list: [
+                {
+                    name: "lsm",
+                    age: 21
+                },
+                {
+                    name: "nd",
+                    age: 22
+                }, {
+                    name: "ded",
+                    age: 50
+                }
+            ],
+            url: "http://www.lsm1998.com",
+            img: "img/1.jpg",
+            name: "默认数据"
+        },
+        methods: {
+            onClick: function () {
+                alert("点击按钮")
+            },
+            onClick2: function (s) {
+                alert(s)
+            },
+            onSubmit: function (e) {
+                alert(e)
+
+            }
+        }
+    })
+</script>
+</body>
+</html>

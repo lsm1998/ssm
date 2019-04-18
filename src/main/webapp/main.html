@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/axios.min.js"></script>
+    <script src="js/vue.min.js"></script>
+</head>
+<body>
+<h1>主页面</h1>
+<div id="itany">
+    <h3>数据展示页面</h3>
+    <button @click="send">刷新数据</button>
+
+    </form>
+
+    <ul v-for="items in resData">
+        <li>{{items.id}},{{items.userName}}<span><a href="#">修改</a></span></li>
+    </ul>
+
+    <form>
+        <h3>新增数据</h3>
+        <input type="text" name="userName" v-model="params.userName"><br>
+        <input type="text" name="passWord" v-model="params.passWord"><br>
+        <input type="text" name="nickName" v-model="params.nickName"><br>
+        <input type="number" name="age" v-model="params.age"><br>
+        <button @click="save" onclick="return false">保存</button>
+    </form>
+</div>
+</body>
+<script>
+    window.onload = function () {
+        new Vue({
+            el: '#itany',
+            data: {
+                url: "/user/get.do",
+                resData: [],
+                params: {
+                    userName: "",
+                    passWord: "",
+                    nickName: "",
+                    age: 0
+                },
+                saveUrl:"/user/save.do"
+            },
+            dataType: "json",
+            mounted: function () {
+                this.send()
+            },
+            methods: {
+                send() {
+                    let _this = this;
+                    axios.get(this.url).then(function (response) {
+                        _this.resData = response.data
+                    })
+                },
+                save() {
+                    let _this = this;
+                    let params = new URLSearchParams();
+                    params.append('userName', _this.params.userName);
+                    params.append('passWord', _this.params.passWord);
+                    params.append('nickName', _this.params.nickName);
+                    params.append('age', _this.params.age);
+                    axios.post(this.saveUrl,params).then(function (response) {
+                        let result=response.data;
+                        alert("result.code="+result.code)
+                        if(result.code=1)
+                        {
+                            alert(result.msg)
+                            _this.send()
+                        }else
+                        {
+                            alert(response.data.error)
+                        }
+                    })
+                },
+            }
+        });
+    }
+</script>
+</html>
