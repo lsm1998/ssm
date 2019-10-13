@@ -1,41 +1,72 @@
+/*
+ * 作者：刘时明
+ * 时间：2019/10/13-17:42
+ * 作用：
+ */
 package com.lsm1998.spring.context;
 
+import com.lsm1998.spring.beans.MyBeanWrapper;
 import com.lsm1998.spring.beans.factory.MyBeanFactory;
+import com.lsm1998.spring.beans.factory.config.MyBeanDefinition;
+import com.lsm1998.spring.beans.factory.support.MyAnnotationBeanDefinitionReader;
+import com.lsm1998.spring.beans.factory.support.MyBeanDefinitionReader;
+import com.lsm1998.spring.beans.factory.support.MyDefaultListableBeanFactory;
 
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-/**
- * @作者：刘时明
- * @时间:2018/12/20-20:54
- * @说明：ApplicationContext接口
- */
-public interface MyApplicationContext extends MyBeanFactory
+public class MyApplicationContext extends MyDefaultListableBeanFactory implements MyBeanFactory
 {
-    /**
-     * 注册一个bean
-     * @param name
-     * @param bean
-     * @return
-     */
-    boolean register(String name, Object bean);
+    private String[] configLoadPath;
+    private MyBeanDefinitionReader reader;
 
-    /**
-     * 根据name删除一个Bean
-     * @param naem
-     * @return
-     */
-    boolean remove(String naem);
+    private Map<String, Object> factoryBeanObjectCache = new ConcurrentHashMap<>();
+    private Map<String, MyBeanWrapper> factoryBeanInstanceCache = new ConcurrentHashMap<>();
 
-    /**
-     * 根据类型删除一个bean
-     * @param requiredType
-     * @return
-     */
-    boolean remove(Class<?> requiredType);
+    public MyApplicationContext(String... configLoadPath)
+    {
+        this.configLoadPath = configLoadPath;
+        try
+        {
+            refresh();
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
 
-    /**
-     * 获取IOC容器
-     * @return
-     */
-    Map<String,Object> getIoc();
+    @Override
+    public void refresh() throws Exception
+    {
+        // 处理配置文件
+        reader = new MyAnnotationBeanDefinitionReader(configLoadPath);
+
+        // 加载配置文件，封装为BeanDefinition
+        List<MyBeanDefinition> beanDefinitionList=reader.loadBeanDefinitions();
+    }
+
+    @Override
+    public Object getBean(String name) throws Exception
+    {
+        return null;
+    }
+
+    @Override
+    public Object getBean(Class<?> requiredType) throws Exception
+    {
+        return null;
+    }
+
+    @Override
+    public boolean containsBean(String name)
+    {
+        return false;
+    }
+
+    @Override
+    public boolean isSingleton(String name) throws Exception
+    {
+        return false;
+    }
 }

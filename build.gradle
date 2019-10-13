@@ -9,10 +9,12 @@ version '1.0-SNAPSHOT'
 sourceCompatibility = 11
 
 repositories {
-    mavenCentral()
+    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
 }
 
 dependencies {
+    compile 'org.projectlombok:lombok:1.16.18'
+
     compile 'mysql:mysql-connector-java:8.0.13'
 
     compile "javax.servlet:jstl:1.2"
